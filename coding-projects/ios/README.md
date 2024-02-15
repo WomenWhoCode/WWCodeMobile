@@ -22,11 +22,14 @@ TODO:
    - Claim GitHub issue with a comment.
    - Fork this repository.
    - Create a new branch: `git checkout -b feature/your-feature`.
+     - Name the branch `<work being done: feature, bug fix>/<issue number>_short description of the issue`
    - Commit your changes: `git commit -am 'Add new feature'`.
    - Push to the branch: `git push origin feature/your-feature`.
    - Submit a pull request.
 
   For more detailed instructions and a tutorial on the open source contribution workflow, see links to recordings and slides of past workshops in the [Resources](/coding-projects/resources/) folder.
+
+  Here is an [article](https://jarv.is/notes/how-to-pull-request-fork-github/) that walks you through how to fork a repo to how to submit a pull request
 
   **Types of Contributions Accepted**:
    - Feature coding
@@ -37,7 +40,7 @@ TODO:
    - Dependency updates
    - Wireframes for new features
   
-  If you have other contribution ideas, please create a GitHub issue and discuss with a maintainer. If you would like to work on an existing GitHub issue but it is too large or you need assistance, comment on the issue or reach out on Slack for assistance.
+  If you have other contribution ideas, please create a GitHub issue and discuss them with a maintainer. If you would like to work on an existing GitHub issue but it is too large or you need assistance, comment on the issue or reach out on Slack for assistance.
 
 5. **Project Structure**:
 This project follows the MVVM design pattern.
