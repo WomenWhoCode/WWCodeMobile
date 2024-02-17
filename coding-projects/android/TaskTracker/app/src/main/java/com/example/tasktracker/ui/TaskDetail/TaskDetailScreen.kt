@@ -56,7 +56,7 @@ class TaskDetailScreen {
             ),
             border = BorderStroke(dimensionResource(R.dimen.detail_border_thickness), Color.Black),
             modifier = Modifier
-                .padding(dimensionResource(R.dimen.detail_content_padding_16))
+                .padding(dimensionResource(R.dimen.medium_padding))
                 .wrapContentSize()
                 .verticalScroll(rememberScrollState()),
             shape = RoundedCornerShape(dimensionResource(R.dimen.detail_card_shape))
@@ -69,7 +69,7 @@ class TaskDetailScreen {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(dimensionResource(R.dimen.detail_content_padding_16)),
+                    .padding(dimensionResource(R.dimen.medium_padding)),
                 horizontalArrangement = Arrangement.End
             ) {
                 IconButton(onClick = { /*TODO*/ }) {
@@ -97,7 +97,7 @@ class TaskDetailScreen {
                 value = textState,
                 onValueChange = { textState = it },
                 modifier = Modifier
-                    .padding(dimensionResource(R.dimen.detail_content_padding_16))
+                    .padding(dimensionResource(R.dimen.medium_padding))
                     .fillMaxWidth()
                     .sizeIn(minHeight = dimensionResource(R.dimen.detail_textfield_min_height))
                     .border(
@@ -138,11 +138,11 @@ class TaskDetailScreen {
                     .align(Alignment.CenterHorizontally)
                     .padding(
                         top = dimensionResource(R.dimen.detail_done_button_padding),
-                        bottom = dimensionResource(R.dimen.detail_content_padding_8)
+                        bottom = dimensionResource(R.dimen.small_padding)
                     ),
                 contentPadding = PaddingValues(
                     horizontal = dimensionResource(R.dimen.detail_done_button_inside_padding),
-                    vertical = dimensionResource(R.dimen.detail_content_padding_8)
+                    vertical = dimensionResource(R.dimen.small_padding)
                 )
             ) {
                 Text(text = stringResource(id = R.string.done).uppercase())
@@ -156,8 +156,8 @@ class TaskDetailScreen {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(
-                    horizontal = dimensionResource(R.dimen.detail_content_padding_16),
-                    vertical = dimensionResource(R.dimen.detail_content_padding_8)
+                    horizontal = dimensionResource(R.dimen.medium_padding),
+                    vertical = dimensionResource(R.dimen.small_padding)
                 ),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {

@@ -6,8 +6,10 @@ This is an open source project to build a Timed Activity Tracker using SwiftUI.
 1. **Fork**: Click the "Fork" button to start your project based on what is currently available.
 
 2. **Setup and Configuration**:
-TODO:
-   - [Add specific setup steps here, e.g., installation instructions, environment setup, configuration steps, etc.]
+
+  [Xcode documentation](https://developer.apple.com/documentation/xcode)
+  [Xcode Source Control Management]([https:/](https://developer.apple.com/documentation/xcode/source-control-management)/)
+  [Combining code changes in a source control repository](https://developer.apple.com/documentation/xcode/combining-code-changes-in-a-source-control-repository)
 
 3. **Usage**:
 TODO:

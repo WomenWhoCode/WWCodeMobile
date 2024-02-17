@@ -60,4 +60,5 @@ private struct AddButtonView: View {
 
 #Preview {
     ContentView()
+        .modelContainer(taskListPreviewContainer)
 }

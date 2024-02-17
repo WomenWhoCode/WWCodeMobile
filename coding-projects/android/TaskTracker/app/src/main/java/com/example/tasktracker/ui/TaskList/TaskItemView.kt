@@ -10,6 +10,7 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
@@ -32,21 +33,29 @@ fun TaskCard(task: Task, modifier: Modifier = Modifier) {
             containerColor = Color.White,
         ),
         ) {
-        Row(horizontalArrangement = Arrangement.SpaceBetween) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
             Text(
                 text = task.taskTitle,
-                modifier = Modifier
-                    .weight(1f)
-                    .padding(dimensionResource(R.dimen.content_padding)),
+                modifier = Modifier.padding(
+                    top = dimensionResource(id = R.dimen.medium_padding),
+                    bottom = dimensionResource(id = R.dimen.medium_padding),
+                    start = dimensionResource(id = R.dimen.medium_padding)
+                ),
                 style = MaterialTheme.typography.bodySmall,
 
             )
-            Spacer(Modifier.weight(1f).fillMaxWidth())
-            Text(
-                text = task.taskTime,
-                modifier = Modifier
+            Spacer(
+                Modifier
                     .weight(1f)
-                    .padding(dimensionResource(R.dimen.content_padding)),
+                    .fillMaxWidth())
+            Text(
+                modifier = Modifier
+                    .padding(end = dimensionResource(R.dimen.medium_padding))
+                    .align(alignment = Alignment.CenterVertically),
+                text = task.taskTime,
                 style = MaterialTheme.typography.bodySmall
             )
         }

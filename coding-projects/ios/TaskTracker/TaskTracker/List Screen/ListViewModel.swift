@@ -7,7 +7,23 @@
 
 import Foundation
 
+import SwiftData
+
 class ListViewModel: ObservableObject {
+
+    func formatDuration(start: Date, end: Date) -> String {
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = .positional
+        formatter.allowedUnits = [.hour, .minute, .second]
+        formatter.zeroFormattingBehavior = .pad
+
+        if let durationString = formatter.string(from: start, to: end) {
+            return durationString
+        } else {
+            return "Unknown"
+        }
+    }
+
     let activities: [Activity] = [
         Activity(
             name: "walking 🚶",

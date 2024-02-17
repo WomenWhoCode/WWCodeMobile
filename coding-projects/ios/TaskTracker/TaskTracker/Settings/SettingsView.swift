@@ -14,7 +14,7 @@ struct SettingsView: View {
                 // TODO: Add version number footer #122
                 Section {
                     AboutUsView()
-                    // TODO: Add Privacy Policy row #110
+                    PrivacyView()
                     // TODO: Add Tutorial row #111
                     RateAppView()
                     FollowOnTwitterView()
@@ -71,6 +71,21 @@ private struct AboutUsView: View {
                 .font(Font.body.weight(.regular))
                 .imageScale(.large)
             Text("About Us")
+            Spacer()
+            Image(systemName: "chevron.right")
+        }
+    }
+}
+
+private struct PrivacyView: View {
+
+    var body: some View {
+        HStack{
+            Image(systemName: "lock.shield.fill")
+                .foregroundColor(.purple)
+                .font(Font.body.weight(.regular))
+                .imageScale(.large)
+            Text("Privacy Policy")
             Spacer()
             Image(systemName: "chevron.right")
         }

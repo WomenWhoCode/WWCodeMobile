@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="content_padding">16dp</dimen>
-    <dimen name="task_list_padding">16dp</dimen>
+    <dimen name="small_padding">8dp</dimen>
+    <dimen name="medium_padding">16dp</dimen>
     <dimen name="border_thickness">2dp</dimen>
-    <dimen name="round_corner_padding">8dp</dimen>
+    <dimen name="small_round_corner">8dp</dimen>
     <dimen name="app_bar_padding">6dp</dimen>
     <dimen name="app_bar_spacing">4dp</dimen>
     <dimen name="plus_icon_size">40dp</dimen>
 
-    <dimen name="detail_content_padding_16">16dp</dimen>
-    <dimen name="detail_content_padding_8">8dp</dimen>
     <dimen name="detail_border_thickness">1dp</dimen>
     <dimen name="detail_card_shape">30dp</dimen>
     <dimen name="detail_textfield_min_height">100dp</dimen>
