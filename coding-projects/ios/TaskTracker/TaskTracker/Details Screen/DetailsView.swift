@@ -53,19 +53,21 @@ struct DetailsScreen: View {
     }
     
     struct TopBarView: View {
+        @State private var showCancelConfirmation = false
         
         var body: some View {
             HStack(alignment: .lastTextBaseline, spacing: 16){
                 Spacer()
                 Button(action: {
-                    // TODO: Add confirmation pop-up for cancel button #131
+                    // TODO: Add confirmation pop-up for delete button #132
                 },
                        label: {
                     Image(systemName: "trash.circle")
                         .foregroundStyle(.black)
                 })
                 Button(action: {
-                    // TODO: Add confirmation pop-up for delete button #132
+                    // TODO: Add confirmation pop-up for cancel button #132
+                    showCancelConfirmation.toggle()
                 },
                        label: {
                     Image(systemName: "x.circle.fill")
@@ -96,14 +98,13 @@ struct DetailsScreen: View {
                     .lineLimit(1)
                     .minimumScaleFactor(0.5)
                 Spacer()
-                Button(action: {
+                Button {
                     buttonAction()
-                },
-                       label: {
+                } label: {
                     Text(buttonString)
                         .foregroundStyle(.white)
                         .fontWeight(.medium)
-                })
+                }
                 .padding()
                 .frame(minWidth: 0, maxWidth: 120)
                 .border(Color.green, width: 3)
