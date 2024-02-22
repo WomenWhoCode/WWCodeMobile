@@ -10,4 +10,6 @@
     <string name="textfield_label">Today I worked on ...</string>
     <string name="delete">Delete</string>
     <string name="cancel">Cancel</string>
+    <string name="ok">Ok</string>
+    <string name="cancel_popup_message">You have unsaved data, are you sure you want to close without saving?</string>
 </resources>

@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CardDefaults
@@ -49,7 +50,15 @@ import com.example.tasktracker.ui.theme.Green
 class TaskDetailScreen {
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
-    fun TaskDetailScreen() {
+    fun TaskDetailScreen(onNavigateToList: () -> Unit) {
+        val (showCancelConfirmationPopup, setShowCancelConfirmationPopup) = remember { mutableStateOf(false) }
+
+        // Function to handle cancel confirmation
+        val onCancelConfirmed = {
+            setShowCancelConfirmationPopup(false)
+            onNavigateToList()
+        }
+
         OutlinedCard(
             colors = CardDefaults.cardColors(
                 containerColor = Color.White,
@@ -78,13 +87,15 @@ class TaskDetailScreen {
                         contentDescription = stringResource(id = R.string.delete),
                     )
                 }
-                IconButton(onClick = { /*TODO*/ }) {
-                    Icon(
-                        painter = painterResource(id = R.drawable.baseline_cancel_24),
-                        contentDescription = stringResource(id = R.string.cancel),
-                        tint = Color.Red
-                    )
-                }
+                CancelButton(onClick = { setShowCancelConfirmationPopup(true) })
+            }
+
+            if (showCancelConfirmationPopup) {
+                ConfirmationDialog(
+                    message = stringResource(id = R.string.cancel_popup_message),
+                    onConfirm = onCancelConfirmed,
+                    onCancel = { setShowCancelConfirmationPopup(false) }
+                )
             }
 
             LabelButtonRow(
@@ -181,9 +192,57 @@ class TaskDetailScreen {
         }
     }
 
+    @Composable
+    fun CancelButton(onClick: () -> Unit) {
+        IconButton(onClick = onClick) {
+            Icon(
+                painter = painterResource(id = R.drawable.baseline_cancel_24),
+                contentDescription = stringResource(id = R.string.cancel),
+                tint = Color.Red
+            )
+        }
+    }
+
+    @Composable
+    fun ConfirmationDialog(
+        message: String,
+        onConfirm: () -> Unit,
+        onCancel: () -> Unit
+    ) {
+        AlertDialog(
+            onDismissRequest = onCancel,
+            text = { Text(text = message) },
+            confirmButton = {
+                Button(
+                    onClick = { onConfirm() }
+                ) {
+                    Text(text = stringResource(id = R.string.ok))
+                }
+            },
+            dismissButton = {
+                Button(
+                    onClick = { onCancel() }
+                ) {
+                    Text(text = stringResource(id = R.string.cancel))
+                }
+            }
+        )
+    }
+
+
     @Preview(showBackground = true)
     @Composable
     fun TaskDetailScreenPreview() {
-        TaskDetailScreen()
+        TaskDetailScreen(onNavigateToList = {})
+    }
+
+    @Preview(showBackground = true)
+    @Composable
+    fun ConfirmationDialogPreview() {
+        ConfirmationDialog(
+            message = stringResource(id = R.string.cancel_popup_message),
+            onConfirm = {  },
+            onCancel = {  }
+        )
     }
 }
