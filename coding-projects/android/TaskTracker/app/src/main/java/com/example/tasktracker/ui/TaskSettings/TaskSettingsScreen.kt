@@ -3,16 +3,29 @@ package com.example.tasktracker.ui.TaskSettings
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
@@ -58,7 +71,31 @@ fun TaskSettingsScreen() {
             Card(modifier = Modifier.fillMaxWidth()){
                 // TODO - #173 - Add a "Show Days" row
                 // TODO - #174 - Add a "Task Reminder" row
-                // TODO - #175 - Add a "Show Badge" row
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(16.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+
+                    // Spacer for visual separation
+                    Spacer(modifier = Modifier.width(16.dp))
+
+                    // Text for Show Badge setting
+                    Text(
+                        text = "SHOW BADGE ON APP ICON",
+                    )
+
+                    // Toggle button for Show Badge setting
+                    Spacer(modifier = Modifier.weight(1f))
+                    var showBadgeEnabled by remember { mutableStateOf(false) }
+                    Switch(
+                        checked = showBadgeEnabled,
+                        onCheckedChange = { isChecked ->
+                            showBadgeEnabled = isChecked
+                        },
+                    )
+                }
                 // TODO - #176 - Add a "Reminder Time" row
             }
             // TODO - #168 - Add a section header for "What's New?"
