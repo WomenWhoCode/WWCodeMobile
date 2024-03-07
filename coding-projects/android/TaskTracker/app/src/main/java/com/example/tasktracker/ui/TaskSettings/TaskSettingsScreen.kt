@@ -46,7 +46,9 @@ fun TaskSettingsPreview() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TaskSettingsScreen() {
+fun TaskSettingsScreen(viewModel: TaskSettingsViewModel) {
+    val state = viewModel.stateflorw.collectAsState()
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -87,11 +89,12 @@ fun TaskSettingsScreen() {
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(text = stringResource(id = R.string.task_reminder).uppercase(), fontSize = 16.sp , modifier = Modifier.weight(1f).padding(start = 8.dp))
-                    var taskReminderEnabled by remember { mutableStateOf(false) }
+                    //var taskReminderEnabled by remember { mutableStateOf(false) }
                     Switch(
-                        checked = taskReminderEnabled,
+                        checked = state.taskReminderEnabled,
                         onCheckedChange = { isChecked ->
-                            taskReminderEnabled = isChecked
+                            //taskReminderEnabled = isChecked
+                            viewModel.toggleTaskReminder()
                         }
                     )
                 }

@@ -8,6 +8,7 @@ import com.example.tasktracker.navigation.NavScreens
 import com.example.tasktracker.ui.TaskDetail.TaskDetailScreen
 import com.example.tasktracker.ui.TaskList.TaskListScreen
 import com.example.tasktracker.ui.TaskSettings.TaskSettingsScreen
+import com.example.tasktracker.ui.TaskSettings.TaskSettingsViewModel
 
 @Composable
 fun MainScreen() {
@@ -20,7 +21,8 @@ fun MainScreen() {
                 onNavigateToDetail = { navController.navigate(NavScreens.TaskDetail.route) })
         }
         composable(NavScreens.TaskSettings.route) {
-            TaskSettingsScreen()
+            val viewModel = hiltViewModel<TaskSettingsViewModel>()
+            TaskSettingsScreen(viewModel)
         }
         composable(NavScreens.TaskDetail.route) {
             TaskDetailScreen(onNavigateToList = { navController.navigate(NavScreens.TaskList.route) },
