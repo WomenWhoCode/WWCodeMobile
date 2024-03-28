@@ -40,12 +40,6 @@ struct SettingsView: View {
                 Section {
                     VersionViewRow()
                     VoteViewRow()
-                    Section {
-                        ThemeView()
-                        // TODO: App Icon #117
-                    } header: {
-                        Label("Appearance",
-                              systemImage: "paintpalette")
                 } header: {
                     Label("What's New", systemImage: "wand.and.stars")
                         .font(.subheadline)
@@ -58,13 +52,11 @@ struct SettingsView: View {
                 } header: {
                     Label("Appearance",
                           systemImage: "paintpalette")
-                        .font(.subheadline)
-                        .fontWeight(.bold)
-                    }
-                    
+                    .font(.subheadline)
+                    .fontWeight(.bold)
                 }
-                .navigationBarTitle("Settings")
             }
+            .navigationBarTitle("Settings")
         }
     }
     
@@ -214,6 +206,23 @@ struct SettingsView: View {
         }
     }
     
+    private struct AppIconView: View {
+        var body: some View {
+            HStack {
+                Image(systemName: "square.fill")
+                    .foregroundColor(.purple)
+                    .font(Font.body.weight(.regular))
+                    .imageScale(.large)
+                Text("App Icon")
+                Spacer()
+                Text("PRO")
+                    .foregroundColor(.purple)
+                    .font(Font.body.weight(.light))
+                Image(systemName: "chevron.right")
+            }
+        }
+    }
+    
     private struct ShowBadgeView: View {
         @State private var showBadge = true
         var body: some View {
@@ -223,33 +232,6 @@ struct SettingsView: View {
                 Toggle(isOn: $showBadge) {}
                     .tint(.purple)
             }
-}
-
-private struct AppIconView: View {
-    var body: some View {
-        HStack {
-            Image(systemName: "square.fill")
-                .foregroundColor(.purple)
-                .font(Font.body.weight(.regular))
-                .imageScale(.large)
-            Text("App Icon")
-            Spacer()
-            Text("PRO")
-                .foregroundColor(.purple)
-                .font(Font.body.weight(.light))
-            Image(systemName: "chevron.right")
-        }
-    }
-}
-
-private struct ShowBadgeView: View {
-    @State private var showBadge = true
-    var body: some View {
-        HStack {
-            Text("Show Badge")
-            Spacer()
-            Toggle(isOn: $showBadge) {}
-                .tint(.purple)
         }
     }
     
@@ -291,7 +273,8 @@ private struct ShowBadgeView: View {
         }
     }
 }
-    #Preview {
-        SettingsView()
-    }
-    
+
+#Preview {
+    SettingsView()
+}
+
