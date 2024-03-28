@@ -119,6 +119,15 @@ struct DetailsScreen: View {
                 }
             )
             
+            if isTextFieldFocused {
+                Color.clear
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        isTextFieldFocused = false // Dismiss the keyboard
+                    }
+                    .ignoresSafeArea() // Ignore safe area insets to cover the entire screen
+            }
+            
             // show popup on the whole screen
             if $showDeleteConfirmationPopup.wrappedValue {
                 if let unwrappedTask = task {
@@ -139,9 +148,6 @@ struct DetailsScreen: View {
                           showButton: $showCancelConfirmationPopup,
                           shouldDismiss: $shouldDismiss)
             }
-        }
-        .onTapGesture {
-            isTextFieldFocused = false
         }
         Spacer()
     }
